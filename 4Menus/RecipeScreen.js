@@ -10,6 +10,9 @@ class RecipeScreen extends Component{
     onPressChickenButton(){
       this.props.navigation.navigate('Chicken');
     }
+    onPressBurritoButton(){
+        this.prop.navigation.navigate('Burrito');
+    }
     render(){
 
       return(
@@ -18,6 +21,10 @@ class RecipeScreen extends Component{
             <Button 
             onPress = {() => this.onPressChickenButton()}
             title = "Korean Chicken"
+            />
+            <Button
+            onPress = {() => this.onPressBurritoButton()}
+            title = "Burrito Bowls"
             />
           </View>
         </View>
