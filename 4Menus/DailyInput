@@ -19,8 +19,9 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
-            <Picker.Item label="White Potatoes" value="java" />
-            <Picker.Item label="Corn" value="js" />
+            <Picker.Item label="None" value="none" />
+            <Picker.Item label="White Potatoes" value="whitepotatoes" />
+            <Picker.Item label="Corn" value="corn" />
             <Picker.Item label="Sweet Potatoes" value="sweetpotatoes" />
           </Picker>
           <Picker
@@ -28,6 +29,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
             <Picker.Item label="2 lb" value="2 lb" />
@@ -40,6 +42,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="None" value="none" />
             <Picker.Item label="Black Beans" value="blackbeans" />
             <Picker.Item label="Kidney Beans" value="kidneybeans" />
             <Picker.Item label="Peas" value="peas" />
@@ -52,6 +55,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
             <Picker.Item label="2 lb" value="2 lb" />
@@ -64,6 +68,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="None" value="none" />
             <Picker.Item label="Spinach" value="spinach" />
             <Picker.Item label="Kale" value="kale" />
             <Picker.Item label="Romain" value="romain" />
@@ -73,6 +78,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
             <Picker.Item label="2 lb" value="2 lb" />
@@ -85,6 +91,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="None" value="none" />
             <Picker.Item label="Soy" value="soy" />
             <Picker.Item label="Soybeans" value="soybean" />
             <Picker.Item label="Tofu" value="tofu" />
@@ -98,6 +105,7 @@ class DailyInputScreen extends Component{
             onValueChange={(itemValue, itemIndex) =>
             this.setState({language: itemValue})
             }>
+            <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
             <Picker.Item label="2 lb" value="2 lb" />
