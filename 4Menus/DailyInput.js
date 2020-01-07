@@ -6,6 +6,25 @@ class DailyInputScreen extends Component{
     static navigationOptions = {
         title: 'Daily Tracker Input'
       }
+    
+    onPressSaveButton() {
+        if(this.startchyAmount != 'none' && this.startchyInput != 'none'){
+            fetch('http://10.0.2.2:3000/consumed/',{
+              method: 'PATCH',
+                headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    food: "we",
+                    Amount: "Wee",
+                }),
+            })
+        }
+        
+        
+    }
+
 
       render() {
     return (
@@ -16,9 +35,10 @@ class DailyInputScreen extends Component{
         <View style = {styles.icons}>
           <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.props.starchyInput}
+            onValueChange={(itemValue) =>
+            this.setState({starchyInput: itemValue})}
+          >
             <Picker.Item label="None" value="none" />
             <Picker.Item label="White Potatoes" value="whitepotatoes" />
             <Picker.Item label="Corn" value="corn" />
@@ -26,9 +46,11 @@ class DailyInputScreen extends Component{
           </Picker>
           <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.startchyAmount}
+            onValueChange={(itemValue) =>
+            this.setState({starchyAmount: itemValue})}
+            ref={input => { this.startchyAmount = input }}
+          >
             <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
@@ -113,7 +135,7 @@ class DailyInputScreen extends Component{
         </View>
         <View style = {styles.icons}>
             <Button 
-            onPress = {() => this.onPressChickenButton()}
+            onPress = {() => this.onPressSaveButton()}
             title = "Save"
             />
         </View>
@@ -122,12 +144,13 @@ class DailyInputScreen extends Component{
   }
 }
 
+export default DailyInputScreen;
+
 const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
     marginEnd: 10,
     paddingLeft: 40,
-    justifyContent: 'space-around',
     backgroundColor: '#fff',
   },
   icons:{
@@ -145,4 +168,3 @@ const styles = StyleSheet.create({
     color: 'green',
   },
   });
-
