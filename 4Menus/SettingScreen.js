@@ -7,14 +7,14 @@ class Settings extends Component{
         title: 'Settings'
       }
 
-     onPressNotificatonButton(){
+    onPressNotificatonButton() {
       this.props.navigation.navigate('Notification');
     }
     onPressPasswordButton(){
-        this.prop.navigation.navigate('Password');
+        this.props.navigation.navigate('Password');
     }
     onPressLogOutButton(){
-        this.prop.navigation.navigate('Log Out');
+        this.props.navigation.navigate('Home');
     }
     render(){
 
@@ -22,7 +22,7 @@ class Settings extends Component{
         <View style = {styles.container}>
           <View style= {styles.item}>
             <Button 
-            onPress = {() => this.onPressNotificationButton()}
+            onPress = {() => this.onPressNotificatonButton()}
             title = "Notification"
             />          
           </View>
@@ -49,7 +49,7 @@ export default Settings;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight,
+    paddingTop: 30,
   },
   item: {
     backgroundColor: '#f9c2ff',
