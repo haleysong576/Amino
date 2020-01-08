@@ -7,12 +7,16 @@ class Password extends Component{
         title: 'Password'
       }
     
-    onPressButon() {
-      const {password} = this.state
-      if (password == 'haley') {
-        return null;
+      onPressButton() {
+        const {password} = this.state;
+        if (password == 'haley'){
+          this.props.navigation.navigate('PasswordBack');
+          this.pwInput.clear();
+        }
+        else {
+          console.warn("Login Failed")
+        }
       }
-    }
     render(){
       return(
         <View style = {styles.container}>
@@ -22,7 +26,7 @@ class Password extends Component{
           <View style = {styles.item}>
             <Text>Enter the current password</Text>
           </View>
-          <TextInput style = {styles.label} placeholder="Password" underlineColorAndroid = {'gray'} secureTextEntry={true} onChangeText = {text => this.setState ({password: text })}/>
+          <TextInput ref={input => { this.pwInput = input }} style = {styles.label} placeholder="Password" underlineColorAndroid = {'gray'} secureTextEntry={true} onChangeText = {text => this.setState ({password: text })}/>
           <View style = {styles.button}>
             <Button 
             onPress = {() => this.onPressButton()}
