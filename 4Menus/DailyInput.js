@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {View, Image, StyleSheet, Button, Text, ScrollView, Picker} from "react-native";
+import ViewAminoAcids from "./ViewAminoAcids";
 
 class DailyInputScreen extends Component{
 
@@ -7,27 +8,221 @@ class DailyInputScreen extends Component{
         title: 'Daily Tracker Input'
       }
     
+      state = {
+
+      }
     onPressSaveButton() {
-        if(this.startchyAmount != 'none' && this.startchyInput != 'none'){
-            fetch('http://10.0.2.2:3000/consumed/',{
+
+      let count = 0;
+
+        if (this.state.BeansAmount != null && this.state.BeansAmount != 'none'&& this.state.BeansInput != null && this.state.BeansInput != 'none') {
+          
+          fetch('http://10.0.2.2:3000/consumed/',{
+            method: 'POST',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  food: this.state.BeansInput,
+                  Amount: this.state.BeansAmount,
+              }),
+          })
+          count +=  -10;
+        }
+        
+        if (this.state.starchyAmount != null && this.state.starchyInput != null && this.state.starchyAmount != 'none' && this.state.starchyInput != 'none'){
+          
+          fetch('http://10.0.2.2:3000/consumed/',{
+            method: 'POST',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  food: this.state.starchyInput,
+                  Amount: this.state.starchyAmount,
+              }),
+          })
+
+          count += 3;
+          
+      }
+
+        if (this.state.LeafyAmount != null && this.state.LeafyAmount != 'none'&& this.state.LeafyInput != null && this.state.LeafyInput != 'none') {
+          
+          fetch('http://10.0.2.2:3000/consumed/',{
+            method: 'POST',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  food: this.state.LeafyInput,
+                  Amount: this.state.LeafyAmount,
+              }),
+          })
+          count += 10;
+        }
+
+        if (this.state.completeAmount != null && this.state.completeAmount != 'none'&& this.state.completeInput != null && this.state.completeInput != 'none') {
+          
+          fetch('http://10.0.2.2:3000/consumed/',{
+            method: 'POST',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  food: this.state.completeInput,
+                  Amount: this.state.completeAmount,
+              }),
+          })
+          
+          count += 10;
+        }
+
+        if (count == 0){
+          close.warn('No Food Added');
+        }
+        else{
+          fetch('http://10.0.2.2:3000/posts/5df1638e4d650b453b66d9eb',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+
+          fetch('http://10.0.2.2:3000/posts/5df1638e4d650b453b66d9ec',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+
+          fetch('http://10.0.2.2:3000/posts/5df1638e4d650b453b66d9ed',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+
+          fetch('http://10.0.2.2:3000/posts/5df164164d650b453b66d9ee',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+
+          fetch('http://10.0.2.2:3000/posts/5df1644a4d650b453b66d9f3',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+
+          fetch('http://10.0.2.2:3000/posts/5df164164d650b453b66d9f0',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+
+          fetch('http://10.0.2.2:3000/posts/5df1644a4d650b453b66d9f1',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+          
+          console.warn(count);
+          if(count == -10){
+            fetch('http://10.0.2.2:3000/posts/5df1644a4d650b453b66d9f2',{
+            method: 'PATCH',
+              headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  required: false
+              }),
+          })
+          }
+          else if (count == 3){
+            fetch('http://10.0.2.2:3000/posts/5df164164d650b453b66d9ef',{
               method: 'PATCH',
                 headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    food: "we",
-                    Amount: "Wee",
+                    required: false
+                }),
+            })  
+          }
+          else{
+            fetch('http://10.0.2.2:3000/posts/5df1644a4d650b453b66d9f2',{
+              method: 'PATCH',
+                headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    required: false
                 }),
             })
+  
+            fetch('http://10.0.2.2:3000/posts/5df164164d650b453b66d9ef',{
+                method: 'PATCH',
+                  headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                      required: false
+                  }),
+              })
+          }
+          this.props.navigation.navigate('ViewAminoAcids');
         }
         
+        
+       
         
     }
 
 
       render() {
     return (
+
       //safeareaview????
       <ScrollView style = {styles.container}> 
         <Text style = {styles.bigTitle}>Daily Tracker</Text>
@@ -35,8 +230,8 @@ class DailyInputScreen extends Component{
         <View style = {styles.icons}>
           <Picker
             style={{height: 50, width: 150}}
-            selectedValue = {this.props.starchyInput}
-            onValueChange={(itemValue) =>
+            selectedValue = {this.state.starchyInput}
+            onValueChange={itemValue =>
             this.setState({starchyInput: itemValue})}
           >
             <Picker.Item label="None" value="none" />
@@ -46,10 +241,10 @@ class DailyInputScreen extends Component{
           </Picker>
           <Picker
             style={{height: 50, width: 150}}
-            selectedValue = {this.state.startchyAmount}
-            onValueChange={(itemValue) =>
+            selectedValue = {this.state.starchyAmount}
+            onValueChange={itemValue =>
             this.setState({starchyAmount: itemValue})}
-            ref={input => { this.startchyAmount = input }}
+            ref={itemValue => { this.state.startchyAmount = itemValue }}
           >
             <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
@@ -61,9 +256,10 @@ class DailyInputScreen extends Component{
         <View style = {styles.icons}>
           <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.BeansInput}
+            onValueChange={(itemValue) =>
+            this.setState({BeansInput: itemValue})}
+          >
             <Picker.Item label="None" value="none" />
             <Picker.Item label="Black Beans" value="blackbeans" />
             <Picker.Item label="Kidney Beans" value="kidneybeans" />
@@ -74,9 +270,10 @@ class DailyInputScreen extends Component{
           </Picker>
           <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.BeansAmount}
+            onValueChange={(itemValue) =>
+            this.setState({BeansAmount: itemValue})}
+          >
             <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
@@ -85,11 +282,12 @@ class DailyInputScreen extends Component{
         </View>
         <Text style = {styles.titleText}>Leafy Greens</Text>
         <View style = {styles.icons}>
-          <Picker
+        <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.LeafyInput}
+            onValueChange={(itemValue) =>
+            this.setState({LeafyInput: itemValue})}
+          >
             <Picker.Item label="None" value="none" />
             <Picker.Item label="Spinach" value="spinach" />
             <Picker.Item label="Kale" value="kale" />
@@ -97,9 +295,10 @@ class DailyInputScreen extends Component{
           </Picker>
           <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.LeafyAmount}
+            onValueChange={(itemValue) =>
+            this.setState({LeafyAmount: itemValue})}
+          >
             <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
@@ -108,11 +307,12 @@ class DailyInputScreen extends Component{
         </View>
         <Text style = {styles.titleText}>Complete Protein</Text>
         <View style = {styles.icons}>
-          <Picker
+        <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.completeInput}
+            onValueChange={(itemValue) =>
+            this.setState({completeInput: itemValue})}
+          >
             <Picker.Item label="None" value="none" />
             <Picker.Item label="Soy" value="soy" />
             <Picker.Item label="Soybeans" value="soybean" />
@@ -124,9 +324,10 @@ class DailyInputScreen extends Component{
           </Picker>
           <Picker
             style={{height: 50, width: 150}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-            }>
+            selectedValue = {this.state.completeAmount}
+            onValueChange={(itemValue) =>
+            this.setState({completeAmount: itemValue})}
+          >
             <Picker.Item label="0 lb" value="0 lb" />
             <Picker.Item label="1/2 lb" value="0.5 lb" />
             <Picker.Item label="1 lb" value="1 lb" />
@@ -142,6 +343,7 @@ class DailyInputScreen extends Component{
       </ScrollView>
     );
   }
+  
 }
 
 export default DailyInputScreen;
