@@ -10,9 +10,6 @@ class RecipeScreen extends Component{
     onPressChickenButton(){
       this.props.navigation.navigate('Chicken');
     }
-    onPressBurritoButton(){
-        this.prop.navigation.navigate('Burrito');
-    }
     render(){
 
       return(
@@ -20,11 +17,31 @@ class RecipeScreen extends Component{
           <View style= {styles.button}>
             <Button 
             onPress = {() => this.onPressChickenButton()}
-            title = "Korean Chicken"
+            title = "Vegeterian Chili with Pasta"
             />
-            <Button
-            onPress = {() => this.onPressBurritoButton()}
-            title = "Burrito Bowls"
+          </View>
+          <View style= {styles.button}>
+            <Button 
+            onPress = {() => this.onPressChickenButton()}
+            title = "Veggie Burrito Bowl"
+            />
+          </View>
+          <View style= {styles.button}>
+            <Button 
+            onPress = {() => this.onPressChickenButton()}
+            title = "Vegan burgers"
+            />
+          </View>
+          <View style= {styles.button}>
+            <Button 
+            onPress = {() => this.onPressChickenButton()}
+            title = "Bibimbop"
+            />
+          </View>
+          <View style= {styles.button}>
+            <Button 
+            onPress = {() => this.onPressChickenButton()}
+            title = "Oatmeal Pancakes"
             />
           </View>
         </View>
@@ -38,9 +55,9 @@ export default RecipeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: '#fff',
+    alignSelf: 'center',
   },
   icons:{
       flex:1,
