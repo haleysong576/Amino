@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, StyleSheet, FlatList} from "react-native";
+import {View, Text, StyleSheet, FlatList, Button} from "react-native";
 
 class InfoMenuScreen extends Component{
 
@@ -8,7 +8,10 @@ class InfoMenuScreen extends Component{
      static navigationOptions = {
        title: 'Amino Acid Information'
      }
-   
+     
+     onPressButton() {
+      this.props.navigation.navigate('DailyTracker');
+     }
      constructor (props){
        super(props);
        this.state = {isLoading: true,
@@ -43,7 +46,7 @@ class InfoMenuScreen extends Component{
          }
          return (
            <View style = {{flex:1, paddingTop: 20}}>
-             <Text style = {styles.title}>Essential Amino Acids</Text>
+             <Text style = {styles.title}>Essential Amino Acids That You Are Lacking Right Now</Text>
              <FlatList
                data = {this.state.dataSource}
                renderItem = {({item}) => 
@@ -51,6 +54,20 @@ class InfoMenuScreen extends Component{
                }
                keyExtractor = {({_id}, index) => _id} 
              />
+             <Text>There are 22 amino acids in protein, where 9 of them are essential. 
+               The essential amino acids cannot be synthesized by a human body, it must be consumed from food.
+               Animal sources of protein are are complete; there are all the amino acids.
+               However, in some plant sources of complete protein, one or more amino acids are non-existent.
+               You must take a variety of plant based protein to get all the essential amino acids.
+               This tracker app will help you to keep a record of the amino acids that you need to take. 
+               Go to your personal tracker, and start adding in your aminos. Adios Amigos!
+             </Text>
+             <View style = {styles.button}>
+              <Button
+                  onPress = {() => this.onPressButton()}
+                  title = "Go to my tracker"
+              />
+             </View>
            </View>
          );
      }
@@ -66,7 +83,7 @@ class InfoMenuScreen extends Component{
       justifyContent: 'center',
     },
     title: {
-      padding: 30,
+      padding: 20,
       alignItems: 'center',
       justifyContent: 'center',
       color: 'green',
@@ -79,4 +96,9 @@ class InfoMenuScreen extends Component{
         height: 44,
         color: 'black'
       },
+      button: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    }
     });
+
