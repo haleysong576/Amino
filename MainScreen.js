@@ -23,12 +23,12 @@ class MainScreen extends Component{
      }
      
      render() {
-        let pic = {
+     /*   let pic = {
             uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-        };
+         }; */
          return(
          <View style = {styles.icons}>
-             <Image source = {pic} style = {{width: 100, height: 100, alignContent: 'center'}}/>
+             <Image source = {require('./4Menus/protein-packed-meals-and-snacks-featured-image-1.jpg')} style = {{width: 250, height: 100, alignContent: 'center'}}/>
             <View style = {styles.container}>
                <View style = {styles.button}>
                 <Button 
